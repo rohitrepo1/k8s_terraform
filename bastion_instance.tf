@@ -22,15 +22,24 @@ export AWS_SECRET_KEY=${var.aws_secret_key}
 export VPC=${aws_vpc.main.id}
 export KOPS_STATE_STORE="s3://${aws_s3_bucket.kbclusters_s3_bucket.id}"
 export DNS_ZONE=${aws_route53_zone.main.id}
+export CLIENT=${var.client}
 printf -- "${file("${var.private_key}")}" > /home/ubuntu/id_rsa
 printf -- "${file("${var.pub_key}")}" > "/home/ubuntu/id_rsa.pub"
 curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/setup.sh | sh
+curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /opt/createCluster.sh
 EOF
 
   root_block_device {
     volume_type = "gp2"
     volume_size = "${var.bastion["volume_size"]}"
   }
+
+  provisioner "remote-exec" {
+   inline = [
+     "chmod +x /opt/createCluster.sh",
+     "/opt/createCluster.sh",
+   ]
+ }
 
   tags {
     Name             = "${var.client}-bastion"

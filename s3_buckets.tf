@@ -16,6 +16,15 @@ resource "aws_s3_bucket_object" "setup" {
     etag = "${md5(file("./scripts/setup.sh"))}"
 }
 
+
+resource "aws_s3_bucket_object" "cluster" {
+    bucket = "${aws_s3_bucket.script_s3_bucket.id}"
+    acl    = "public-read"
+    key = "setup.sh"
+    source = "./scripts/createCluster.sh"
+    etag = "${md5(file("./scripts/createCluster.sh"))}"
+}
+
 resource "aws_s3_bucket" "kbclusters_s3_bucket" {
     bucket        = "clusters.${var.client}.devops"
     acl           = "private"
