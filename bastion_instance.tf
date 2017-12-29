@@ -29,13 +29,7 @@ EOF
 
   root_block_device {
     volume_type = "gp2"
-    volume_size = "15"
-  }
-
-  ebs_block_device {
-    device_name = "/dev/sdf"
-    volume_type = "gp2"
-    volume_size = "${var.bastion["volume_size"]-15}"
+    volume_size = "${var.bastion["volume_size"]}"
   }
 
   tags {

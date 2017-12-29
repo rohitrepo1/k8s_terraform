@@ -32,5 +32,3 @@ mv kops-linux-amd64 /usr/local/bin/kops
 
 printf "export KOPS_STATE_STORE=$KOPS_STATE_STORE\nexport ZONES=$AWS_REGION"a"\nexport VPC=$VPC\nexport node_count=3\nexport node_size=t2.medium\nexport master_size=t2.medium\nexport api_loadbalancer_type=public\nexport topology=private\nexport dns=private\nexport dns_zone=$DNS_ZONE" > /home/ubunut/vars.sh
 
-source vars.sh
-
