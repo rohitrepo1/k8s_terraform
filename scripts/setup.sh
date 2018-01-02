@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get install -y curl wget unzip git jq gcc openssl-devel python-devel python-pip git
-pip install pywinrm ansible==2.2.2.0 boto boto3 awscli==1.11.36
+pip install pywinrm ansible==2.2.2.0 boto boto3 awscli==1.11.36 shyaml yamllint
 pip install setuptools --upgrade
 
 # Cloud credentials/configs
