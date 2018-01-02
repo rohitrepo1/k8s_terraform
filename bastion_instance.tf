@@ -36,8 +36,13 @@ EOF
 
   provisioner "remote-exec" {
    inline = [
+     "cd /opt",
      "chmod +x /opt/createCluster.sh",
-     "/opt/createCluster.sh",
+     "./createCluster.sh",
+     "git clone https://github.com/projectethan007/wrappers.git",
+     "cd wrappers",
+     "chmod +x *",
+     "./createStack core",
    ]
  }
 
