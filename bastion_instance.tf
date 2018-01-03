@@ -39,7 +39,7 @@ EOF
      "cd /home/ubuntu",
      "sleep 50",
      "chmod +x vars.sh",
-     "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/storageClass.yaml -o /home/ubuntu/stroageClass.yaml",
+     "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/storageClass.yaml -o /home/ubuntu/storageClass.yaml",
      "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /home/ubuntu/createCluster.sh",
      "chmod +x /home/ubuntu/createCluster.sh",
      "./createCluster.sh",

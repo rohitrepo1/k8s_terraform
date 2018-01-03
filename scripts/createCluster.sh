@@ -1,6 +1,6 @@
 #!/bin/bash
 inputfile=/home/ubuntu/vars.sh
-storageclassFile=/home/ubuntu/stroageClass.yaml
+storageclassFile=/home/ubuntu/storageClass.yaml
 
 createPassword()
 {
