@@ -1,4 +1,6 @@
-inputfile=/home/ubunutu/vars.sh
+#!/bin/bash
+inputfile=/home/ubuntu/vars.sh
+storageclassFile=/home/ubuntu/stroageClass.yaml
 
 createPassword()
 {
@@ -6,28 +8,34 @@ createPassword()
   echo "$(date +%s%N | openssl sha256 | awk '{print $2}' | head -c 12)$[ 1000 + $[ RANDOM % 9999 ]]"
 }
 
+echo "Starting Bootstrap"
+sleep 30
+ls $inputfile
 source $inputfile
 echo "Creating Kubernetes cluster using KOPS"
-kops create cluster
-  --name $CLIENT.devops \
-  --node-count $node_count \
-  --zones $ZONES \
-  --node-size $NODE_SIZE \
-  --master-size $MASTER_SIZE \
-  --master-zones $ZONES \
-  --networking calico \
-  --api-loadbalancer-type $api_loadbalancer_type \
-  --topology $topology \
-  --dns-zone $dns_zone \
-  --dns $dns \
-  --vpc $VPC \
+kops create cluster $CLIENT.devops \
+--node-count $node_count \
+--zones $ZONES \
+--node-size $node_size \
+--master-size $master_size \
+--master-zones $ZONES \
+--networking calico \
+--api-loadbalancer-type $api_loadbalancer_type \
+--topology $topology \
+--dns-zone $dns_zone \
+--dns $dns \
+--vpc $VPC \
+--bastion=false \
+--yes
 
+i=100
 valid=$(kops validate cluster | grep ready | wc -l )
 until [ $valid -gt 0 ]
 do
-  sleep 20
-  echo "Still Creating cluster"
+  sleep $i
+  echo "Still Starting cluster"
   valid=$(kops validate cluster | grep ready | wc -l )
+  i=`expr $i - 10`
 done
 
 source $inputfile
@@ -59,6 +67,11 @@ SLAPD_PASSWORD=$LDAP_PASSWORD
 SLAPD_PASSWORD_BASE64=$LDAP_PASSWORD_BASE64
 EOF
 
+echo "Create Ethan Namespace "
+kubectl create ns ethan
+echo "Change Default ns to Ethan"
+kubectl config set-context $(kubectl config current-context) --namespace=ethan
+
 n=$(kubectl get cm | grep pass | wc -l)
 
 if [[ $n -gt 0 ]]
@@ -69,3 +82,9 @@ else
   kubectl create configmap pass --from-file output
   kubectl create configmap dashing-config --from-file /home/ubuntu/.kube/config
 fi
+
+echo "Creating Storage Class"
+sed -i "s|###ZONE###|$ZONES|g" $storageclassFile
+kubectl create -f $storageclassFile
+echo "Storage Class is created"
+echo "Bootstrap is Completed"

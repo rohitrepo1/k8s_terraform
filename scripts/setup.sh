@@ -1,7 +1,7 @@
 #!/bin/bash
-
-apt-get install -y curl wget unzip git jq gcc openssl-devel python-devel python-pip git
-pip install pywinrm ansible==2.2.2.0 boto boto3 awscli==1.11.36 shyaml yamllint
+apt-get update
+apt-get install -y curl wget unzip git jq gcc python-dev build-essential python-pip
+pip install ansible==2.2.2.0 awscli==1.11.36 shyaml yamllint
 pip install setuptools --upgrade
 
 # Cloud credentials/configs
@@ -30,4 +30,4 @@ wget https://github.com/kubernetes/kops/releases/download/1.8.0-alpha.1/kops-lin
 chmod +x kops-linux-amd64
 mv kops-linux-amd64 /usr/local/bin/kops
 
-printf "export KOPS_STATE_STORE=$KOPS_STATE_STORE\nexport ZONES=$AWS_REGION"a"\nexport VPC=$VPC\nexport node_count=3\nexport node_size=t2.medium\nexport master_size=t2.medium\nexport api_loadbalancer_type=public\nexport topology=private\nexport dns=private\nexport dns_zone=$DNS_ZONE\nexport CLIENT=$CLIENT\nexport INITIAL_ADMIN_USER=ethanadmin" > /home/ubunut/vars.sh
+printf "export KOPS_STATE_STORE=$KOPS_STATE_STORE\nexport ZONES=$AWS_REGION"a"\nexport VPC=$VPC\nexport node_count=2\nexport node_size=t2.medium\nexport master_size=t2.medium\nexport api_loadbalancer_type=public\nexport topology=private\nexport dns=private\nexport dns_zone=$DNS_ZONE\nexport CLIENT=$CLIENT\nexport INITIAL_ADMIN_USER=ethanadmin" > /home/ubuntu/vars.sh
