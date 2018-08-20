@@ -25,7 +25,7 @@ export DNS_ZONE=${aws_route53_zone.main.id}
 export CLIENT=${var.client}
 printf -- "${file("${var.private_key}")}" > /home/ubuntu/id_rsa
 printf -- "${file("${var.pub_key}")}" > "/home/ubuntu/id_rsa.pub"
-curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/setup.sh | sh
+curl -fsSL https://s3.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/setup.sh | sh
 pip install shyaml yamllint
 EOF
 
@@ -36,17 +36,22 @@ EOF
 
   provisioner "remote-exec" {
    inline = [
+     "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/tls.key -out /tmp/tls.crt -subj '/CN=foo.bar.com'",
+     "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj '/CN=foo.bar.com'",
+     "kubectl create secret tls nginx-ssl-cert --cert=tls.crt --key=tls.key",
      "cd /home/ubuntu",
      "sleep 50",
-     "chmod +x vars.sh",
-     "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/storageClass.yaml -o /home/ubuntu/storageClass.yaml",
-     "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /home/ubuntu/createCluster.sh",
-     "chmod +x /home/ubuntu/createCluster.sh",
+     "sudo chmod +x vars.sh",
+     "curl -fsSL https://s3.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/storageClass.yaml -o /home/ubuntu/storageClass.yaml",
+     "curl -fsSL https://s3.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /home/ubuntu/createCluster.sh",
+     "sudo chmod +x /home/ubuntu/createCluster.sh",
      "./createCluster.sh",
      "git clone https://github.com/projectethan007/wrappers.git",
      "cd wrappers",
-     "chmod +x *",
+     "sudo chmod +x *",
      "./createStack.sh core",
+     "./train-rasa.sh",
+     "./reloadNginx.sh",
    ]
 
    connection {
