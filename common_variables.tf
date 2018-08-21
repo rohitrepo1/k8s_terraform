@@ -71,11 +71,10 @@ variable "ubuntu" {
     ca-central-1   = "ami-318b3055"
     eu-central-1   = "ami-712cac1e"
     sa-east-1      = "ami-560a4f3a"
-    us-east-1      = "ami-8d9e1cf7"
+    us-east-1      = "ami-759bc50a"
     us-west-1      = "ami-3892ab58"
     ap-southeast-2 = "ami-b0cb20d2"
     eu-west-2      = "ami-07c6d963"
-    ap-northeast-2 = "ami-719d3a1f"
     us-west-2      = "ami-78c81b00"
     us-east-2      = "ami-3af9d75f"
  }
