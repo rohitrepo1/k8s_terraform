@@ -64,7 +64,7 @@ variable "bastion" {
 
 variable "ubuntu" {
   default {
-    eu-west-1      = "ami-1d8c2664"
+    eu-west-1      = "ami-2a7d75c0"
     ap-northeast-1 = "ami-5a28993c"
     ap-south-1     = "ami-10eea17f"
     ap-southeast-1 = "ami-0ca4f16f"
