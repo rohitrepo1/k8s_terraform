@@ -36,9 +36,6 @@ EOF
 
   provisioner "remote-exec" {
    inline = [
-     #"openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/tls.key -out /tmp/tls.crt -subj '/CN=foo.bar.com'",
-     "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj '/CN=foo.bar.com'",
-     "kubectl create secret /tmp/tls nginx-ssl-cert --cert=/tmp/tls.crt --key=/tmp/tls.key",
      "cd /home/ubuntu",
      "sleep 50",
      "sudo chmod +x vars.sh",
@@ -46,7 +43,10 @@ EOF
      "curl -fsSL https://s3.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /home/ubuntu/createCluster.sh",
      "sudo chmod +x /home/ubuntu/createCluster.sh",
      "./createCluster.sh",
-     "git clone -b test --single-branch https://a11492dirnaiclove@innersource.accenture.com/scm/ethan/wrappers.git",
+     #"openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/tls.key -out /tmp/tls.crt -subj '/CN=foo.bar.com'",
+     "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj '/CN=foo.bar.com'",
+     "kubectl create secret /tmp/tls nginx-ssl-cert --cert=/tmp/tls.crt --key=/tmp/tls.key",
+     "git clone -b test --single-branch https://github.com/projectethan007/wrappers.git",
      "cd wrappers",
      "sudo chmod +x *",
      "./createStack.sh core",
