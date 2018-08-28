@@ -36,9 +36,9 @@ EOF
 
   provisioner "remote-exec" {
    inline = [
-     "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/tls.key -out /tmp/tls.crt -subj '/CN=foo.bar.com'",
+     #"openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/tls.key -out /tmp/tls.crt -subj '/CN=foo.bar.com'",
      "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj '/CN=foo.bar.com'",
-     "kubectl create secret tls nginx-ssl-cert --cert=tls.crt --key=tls.key",
+     "kubectl create secret /tmp/tls nginx-ssl-cert --cert=/tmp/tls.crt --key=/tmp/tls.key",
      "cd /home/ubuntu",
      "sleep 50",
      "sudo chmod +x vars.sh",
