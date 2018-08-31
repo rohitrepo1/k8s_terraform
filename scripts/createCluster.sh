@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 200
 inputfile=/home/ubuntu/vars.sh
 storageclassFile=/home/ubuntu/storageClass.yaml
 
@@ -9,7 +10,7 @@ createPassword()
 }
 
 echo "Starting Bootstrap"
-sleep 50
+sleep 30
 ls $inputfile
 source $inputfile
 echo "Creating Kubernetes cluster using KOPS"
