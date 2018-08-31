@@ -9,7 +9,7 @@ createPassword()
 }
 
 echo "Starting Bootstrap"
-sleep 200
+sleep 50
 ls $inputfile
 source $inputfile
 echo "Creating Kubernetes cluster using KOPS"
