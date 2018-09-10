@@ -23,6 +23,8 @@ export VPC=${aws_vpc.main.id}
 export KOPS_STATE_STORE="s3://${aws_s3_bucket.kbclusters_s3_bucket.id}"
 export DNS_ZONE=${aws_route53_zone.main.id}
 export CLIENT=${var.client}
+export NODE_COUNT=${var.node_count}
+export TOOLS=${var.tools_list}
 printf -- "${file("${var.private_key}")}" > /home/ubuntu/id_rsa
 printf -- "${file("${var.pub_key}")}" > "/home/ubuntu/id_rsa.pub"
 curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/setup.sh | sh
@@ -47,6 +49,7 @@ EOF
      "cd wrappers",
      "chmod +x *",
      "./createStack.sh core",
+     "./createStack.sh TOOLS"
    ]
 
    connection {

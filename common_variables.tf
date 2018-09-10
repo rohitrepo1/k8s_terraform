@@ -62,6 +62,14 @@ variable "bastion" {
   }
 }
 
+variable "node_count" {
+  default = "###NODE_COUNT###"
+}
+
+variable "tools_list" {
+  default = "###TOOLS###"
+}
+
 variable "ubuntu" {
   default {
     eu-west-1      = "ami-1d8c2664"
