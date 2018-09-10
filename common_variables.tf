@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "###AWS_LOCATION###"
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
 }
@@ -86,5 +86,5 @@ variable "ubuntu" {
     ap-northeast-2 = "ami-719d3a1f"
     us-west-2      = "ami-78c81b00"
     us-east-2      = "ami-3af9d75f"
- }
+}
 }
