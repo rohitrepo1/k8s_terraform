@@ -14,6 +14,7 @@ resource "aws_instance" "bastion" {
 
   user_data = <<EOF
 #!/bin/bash
+sudo su
 printf "${var.client}bastion.localdomain" > /etc/hostname
 printf "\npreserve_hostname: true" >> /etc/cloud/cloud.cfg
 export AWS_REGION=${var.region}
@@ -40,14 +41,14 @@ EOF
    inline = [
      "cd /home/ubuntu",
      "sleep 50",
-     "chmod +x vars.sh",
+     "sudo chmod +x vars.sh",
      "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/storageClass.yaml -o /home/ubuntu/storageClass.yaml",
      "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /home/ubuntu/createCluster.sh",
-     "chmod +x /home/ubuntu/createCluster.sh",
+     "sudo chmod +x /home/ubuntu/createCluster.sh",
      "./createCluster.sh",
      "git clone https://github.com/projectethan007/wrappers.git",
      "cd wrappers",
-     "chmod +x *",
+     "sudo chmod +x *",
      "./createStack.sh core",
      "./createStack.sh TOOLS"
    ]
