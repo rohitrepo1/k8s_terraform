@@ -39,6 +39,7 @@ EOF
 
   provisioner "remote-exec" {
    inline = [
+     "sleep 120",
      "cd /home/ubuntu",
      "sleep 50",
      "sudo chmod +x vars.sh",
