@@ -47,7 +47,7 @@ EOF
      "curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/createCluster.sh -o /home/ubuntu/createCluster.sh",
      "sudo chmod +x /home/ubuntu/createCluster.sh",
      "./createCluster.sh",
-     "git clone https://github.com/projectethan007/wrappers.git",
+     "git clone -b test --single-branch https://github.com/projectethan007/wrappers.git",
      "cd wrappers",
      "sudo chmod +x *",
      "./createStack.sh core",
