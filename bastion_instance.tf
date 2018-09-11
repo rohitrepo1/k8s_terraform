@@ -53,7 +53,7 @@ EOF
      "cd wrappers",
      "sudo chmod +x *",
      "./createStack.sh core",
-     "./createStack.sh tools"
+     "./createStack.sh tools",
      "./reloadNginx.sh",
    ]
 
