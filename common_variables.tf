@@ -4,8 +4,13 @@ provider "aws" {
   secret_key = "${var.aws_secret_key}"
 }
 
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
+variable "aws_access_key" {
+  default = "###ACCESS_KEY###"
+}
+
+variable "aws_secret_key" {
+  default = "###SECRET_KEY###"
+}
 
 resource "aws_key_pair" "ethankey" {
   key_name   = "${var.client}-key"
