@@ -26,6 +26,7 @@ export DNS_ZONE=${aws_route53_zone.main.id}
 export CLIENT=${var.client}
 export NODE_COUNT=${var.node_count}
 export TOOLS=${var.tools_list}
+export INNERSOURCE=${var.innersource_password}
 printf -- "${file("${var.private_key}")}" > /home/ubuntu/id_rsa
 printf -- "${file("${var.pub_key}")}" > "/home/ubuntu/id_rsa.pub"
 curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/setup.sh | sh
