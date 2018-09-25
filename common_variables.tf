@@ -12,6 +12,10 @@ variable "aws_secret_key" {
   default = "###SECRET_KEY###"
 }
 
+variable "innersource_password" {
+  default = "###PASSWORD###"
+}
+
 resource "aws_key_pair" "ethankey" {
   key_name   = "${var.client}-key"
   public_key = "${file("./ssh_key/###SSH_KEY_NAME###.pub")}"
