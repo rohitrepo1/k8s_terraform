@@ -1,6 +1,9 @@
 output "cluster_name" {
-  value = "euwest.${var.client}.${var.env}"
+  value = "${var.client}.${var.env}"
 }
+output "bastion_ip" {
+  value = "${aws_instance.${var.client}-bastion.public_ip}"
+}  
 
 output "state_store" {
   value = "s3://${aws_s3_bucket.kbclusters_s3_bucket.id}"
