@@ -12,6 +12,10 @@ variable "aws_secret_key" {
   default = "###SECRET_KEY###"
 }
 
+variable "node_type" {
+  default = "###NODE_TYPE###"
+}
+
 variable "innersource_password" {
   default = "###PASSWORD###"
 }
