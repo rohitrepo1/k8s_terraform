@@ -27,6 +27,7 @@ export CLIENT=${var.client}
 export NODE_COUNT=${var.node_count}
 export TOOLS=${var.tools_list}
 export INNERSOURCE=${var.innersource_password}
+export NODE_TYPE=${var.node_type}
 printf -- "${file("${var.private_key}")}" > /home/ubuntu/id_rsa
 printf -- "${file("${var.pub_key}")}" > "/home/ubuntu/id_rsa.pub"
 curl -fsSL https://s3-${var.region}.amazonaws.com/${aws_s3_bucket.script_s3_bucket.id}/setup.sh | sh
