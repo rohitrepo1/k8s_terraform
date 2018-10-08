@@ -2,7 +2,7 @@ output "cluster_name" {
   value = "${var.client}.${var.env}"
 }
 output "bastion_ip" {
-  value = "${aws_instance.${var.client}-bastion.public_ip}"
+  value = "${aws_instance.bastion.public_ip}"
 }  
 
 output "state_store" {
