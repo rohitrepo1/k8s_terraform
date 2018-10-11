@@ -46,7 +46,9 @@ EOF
      "git clone https://github.com/projectethan007/wrappers.git",
      "cd wrappers",
      "chmod +x *",
-     "./createStack.sh core",
+     "./createStack.sh clove-agent",
+     "sleep 20",
+     "kubectl get pods --field-selector=status.phase=Running -l app=clove-agent-rs | grep -v NAME | cut -d ' ' -f1 | xargs -n 1 -I{} kubectl exec {} -- /config/wrappers/createStack.sh core",
    ]
 
    connection {
