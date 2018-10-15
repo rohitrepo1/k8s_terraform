@@ -12,7 +12,7 @@ def main(clientname, region, nodecount, toolslist):
         tool = [i for i in tools]
         print len(tool)
        if len(tool) > 0:
-          modified_list = "-".join(str(x) for x in tool)
+          modified_list = "/".join(str(x) for x in tool)
         else:
           modified_list = ""
         command = 'ssh-keygen -f '+clientname+' -q -P ""'
