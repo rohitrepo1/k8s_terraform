@@ -6,3 +6,4 @@ metadata:
 provisioner: kubernetes.io/aws-ebs
 parameters:
   zone: "###ZONE###"
+  encrypted: "true"

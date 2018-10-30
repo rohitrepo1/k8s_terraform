@@ -17,6 +17,7 @@ kops create cluster $CLIENT.devops \
 --node-count $node_count \
 --zones $ZONES \
 --node-size $node_size \
+--image "ami-033fd2a6046fb490c" \
 --master-size $master_size \
 --master-zones $ZONES \
 --networking calico \
