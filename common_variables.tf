@@ -85,19 +85,20 @@ variable "tools_list" {
 
 variable "ubuntu" {
   default {
-    eu-west-1      = "ami-1d8c2664"
-    ap-northeast-1 = "ami-5a28993c"
-    ap-south-1     = "ami-10eea17f"
-    ap-southeast-1 = "ami-0ca4f16f"
-    ca-central-1   = "ami-318b3055"
-    eu-central-1   = "ami-712cac1e"
-    sa-east-1      = "ami-560a4f3a"
-    us-east-1      = "ami-06ae475234eff871e"
-    us-west-1      = "ami-3892ab58"
-    ap-southeast-2 = "ami-b0cb20d2"
-    eu-west-2      = "ami-07c6d963"
-    ap-northeast-2 = "ami-719d3a1f"
+    eu-west-1      = "ami-03aeebbb10c98e3a4"
+    ap-northeast-1 = "ami-0a90052ed2cafb2ab"
+    ap-south-1     = "ami-0a8074f27bfb82e4c"
+    ap-southeast-1 = "ami-01d832e65ada04e08"
+    ca-central-1   = "ami-0d3b851d78474b33c"
+    eu-central-1   = "ami-09b5d753a3189571f"
+    sa-east-1      = "ami-025b32916c29a3dd0"
+    us-east-1      = "ami-0bc8e719eef63c6d6"
+    us-west-1      = "ami-0cd4c5406e3a0d07b"
+    ap-southeast-2 = "ami-05eeaad3a34c2667a"
+    eu-west-2      = "ami-0075b759cd7ee5cb3"
+    ap-northeast-2 = "ami-066838476a8c6fdab"
     us-west-2      = "ami-0b681e34f0b031a18"
-    us-east-2      = "ami-3af9d75f"
+    us-east-2      = "ami-011254f5862de0b16"
+	eu-west-3      = "ami-034d370ce4ae52a04"
 }
 }
