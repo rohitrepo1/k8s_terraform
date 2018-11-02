@@ -17,7 +17,7 @@ kops create cluster $CLIENT.devops \
 --node-count $node_count \
 --zones $ZONES \
 --node-size $node_size \
---image "ami-033fd2a6046fb490c" \
+--image $K8_AMI \
 --encrypt-etcd-storage \
 --master-size $master_size \
 --master-zones $ZONES \

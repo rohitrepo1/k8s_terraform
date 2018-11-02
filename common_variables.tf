@@ -102,3 +102,23 @@ variable "ubuntu" {
 	eu-west-3      = "ami-034d370ce4ae52a04"
 }
 }
+
+variable "k8s" {
+  default {
+    eu-west-1      = "ami-0b85ea07246fac3fd"
+    ap-northeast-1 = "ami-0e41312f132737f31"
+    ap-south-1     = "ami-06acd211f61fee87d"
+    ap-southeast-1 = "ami-078bb4c792ac9f35b"
+    ca-central-1   = "ami-06291eaaa107516ab"
+    eu-central-1   = "ami-020226fc2fa1ed0ee"
+    sa-east-1      = "ami-0b36f8e46c6c5ae8e"
+    us-east-1      = "ami-0ca2b2dcb8f83b23b"
+    us-west-1      = "ami-064b034a9054c5b6b"
+    ap-southeast-2 = "ami-0ab51bfc1782cb2aa"
+    eu-west-2      = "ami-0a4c06da526ca93d6"
+    ap-northeast-2 = "ami-0984e6b3611c07594"
+    us-west-2      = "ami-033fd2a6046fb490c"
+    us-east-2      = "ami-01a8d4e9ee1138b6f"
+}
+}
+

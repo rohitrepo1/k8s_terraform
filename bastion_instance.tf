@@ -18,6 +18,7 @@ sudo su
 printf "${var.client}bastion.localdomain" > /etc/hostname
 printf "\npreserve_hostname: true" >> /etc/cloud/cloud.cfg
 export AWS_REGION=${var.region}
+export K8_AMI=${lookup(var.k8s, var.region)}
 export AWS_ACCESS_KEY=${var.aws_access_key}
 export AWS_SECRET_KEY=${var.aws_secret_key}
 export VPC=${aws_vpc.main.id}

@@ -35,4 +35,4 @@ then
 else
    TOOLS1=`echo $TOOLS|sed 's/\// /g'|sed -e "s/.*/\"&\"/"`
 fi
-printf "export KOPS_STATE_STORE=$KOPS_STATE_STORE\nexport ZONES=$AWS_REGION"a"\nexport VPC=$VPC\nexport node_count=$NODE_COUNT\nexport node_size=$NODE_TYPE\nexport master_size=t2.medium\nexport api_loadbalancer_type=public\nexport topology=private\nexport dns=private\nexport dns_zone=$DNS_ZONE\nexport CLIENT=$CLIENT\nexport INITIAL_ADMIN_USER=ethanadmin\nexport TOOLS=$TOOLS1\nexport password=$INNERSOURCE\nexport node_type=$NODE_TYPE" > /home/ubuntu/vars.sh
+printf "export K8_AMI=$K8_AMI\nexport KOPS_STATE_STORE=$KOPS_STATE_STORE\nexport ZONES=$AWS_REGION"a"\nexport VPC=$VPC\nexport node_count=$NODE_COUNT\nexport node_size=$NODE_TYPE\nexport master_size=t2.medium\nexport api_loadbalancer_type=public\nexport topology=private\nexport dns=private\nexport dns_zone=$DNS_ZONE\nexport CLIENT=$CLIENT\nexport INITIAL_ADMIN_USER=ethanadmin\nexport TOOLS=$TOOLS1\nexport password=$INNERSOURCE\nexport node_type=$NODE_TYPE" > /home/ubuntu/vars.sh
