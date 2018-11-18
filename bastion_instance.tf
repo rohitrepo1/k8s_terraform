@@ -57,6 +57,8 @@ EOF
      "./createStack.sh core",
      "./createStack.sh tools",
      "./reloadNginx.sh",
+     "kubectl get svc | grep -i nginx | awk '{print $4}' > Details",
+     "kubectl get cm pass -o yaml | grep INITIAL_ADMIN | sed -n 1,2p >> Details",
    ]
 
    connection {
