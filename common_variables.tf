@@ -1,11 +1,24 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "###AWS_LOCATION###"
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
 }
 
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
+variable "aws_access_key" {
+  default = "###ACCESS_KEY###"
+}
+
+variable "aws_secret_key" {
+  default = "###SECRET_KEY###"
+}
+
+variable "node_type" {
+  default = "###NODE_TYPE###"
+}
+
+variable "innersource_password" {
+  default = "###PASSWORD###"
+}
 
 resource "aws_key_pair" "ethankey" {
   key_name   = "${var.client}-key"
@@ -62,6 +75,14 @@ variable "bastion" {
   }
 }
 
+variable "node_count" {
+  default = "###NODE_COUNT###"
+}
+
+variable "tools_list" {
+  default = "###TOOLS###"
+}
+
 variable "ubuntu" {
   default {
     eu-west-1      = "ami-1d8c2664"
@@ -78,5 +99,5 @@ variable "ubuntu" {
     ap-northeast-2 = "ami-719d3a1f"
     us-west-2      = "ami-78c81b00"
     us-east-2      = "ami-3af9d75f"
- }
+}
 }
