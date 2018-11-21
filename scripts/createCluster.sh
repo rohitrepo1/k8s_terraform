@@ -17,6 +17,7 @@ kops create cluster $CLIENT.devops \
 --node-count $node_count \
 --zones $ZONES \
 --node-size $node_size \
+--encrypt-etcd-storage \
 --master-size $master_size \
 --master-zones $ZONES \
 --networking calico \
