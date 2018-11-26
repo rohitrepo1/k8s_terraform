@@ -55,7 +55,7 @@ EOF
      "cd wrappers",
      "sudo chmod +x *",
      "./createStack.sh clove-agent",
-     "sleep 120",
+     "sleep 300",
      "kubectl get pods --field-selector=status.phase=Running -l app=clove-agent-rs | grep -v NAME | cut -d ' ' -f1 | xargs -n 1 -I{} kubectl cp /home/ubuntu/vars.sh {}:/config", 
      "kubectl get pods --field-selector=status.phase=Running -l app=clove-agent-rs | grep -v NAME | cut -d ' ' -f1 | xargs -n 1 -I{} kubectl exec {} -- /config/wrappers/createStack.sh core",
      "kubectl get pods --field-selector=status.phase=Running -l app=clove-agent-rs | grep -v NAME | cut -d ' ' -f1 | xargs -n 1 -I{} kubectl exec {} -- /config/wrappers/createStack.sh tools",
