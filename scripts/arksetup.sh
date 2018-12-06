@@ -1,4 +1,3 @@
-
 #!/bin/bash
 inputfile=/home/ubuntu/vars.sh
 Backupstoragefile=/home/ubuntu/heptio-ark/ark-backupstoragelocation.yaml
