@@ -19,14 +19,16 @@ sleep 5
 kubectl create secret generic cloud-credentials --namespace heptio-ark --from-file cloud=credentials-ark
 echo "secret cloud-crredentials created"
 sleep 5
+ZONE=`echo $ZONES | rev | cut -c 2- | rev`
+echo $ZONE
 
 echo "creating backup storagelocation"
-sed -i "s|###ZONES###|$ZONES|g" $Backupstoragefile
+sed -i "s|###ZONES###|$ZONE|g" $Backupstoragefile
 sed -i "s|###CLIENT###|$CLIENT|g" $Backupstoragefile
 kubectl apply -f ark-volumesnapshotlocation.yaml
 
 echo "creating volume snapshot location"
-sed -i "s|###ZONES###|$ZONES|g" $Volumesnapshotlocation
+sed -i "s|###ZONES###|$ZONE|g" $Volumesnapshotlocation
 kubectl apply -f ark-backupstoragelocation.yaml
 
 echo "creating deployment"
